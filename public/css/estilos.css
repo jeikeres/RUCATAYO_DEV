@@ -1,0 +1,506 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Rojo : #ed5565;
+   Verde : #18a689;
+   Celeste : #21b9bb;
+   Azul :#1c84c6;
+   Naranja : #f8ac59;
+*/
+
+html 
+{
+	margin: 0px; 
+	height: 100%; 
+	padding: 0px;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body 
+{
+font-family: 'open_sansregular';
+font-size: 13px;
+font-weight: 100;
+color: #666;  
+margin: 0px;
+padding: 0px;
+min-height: 100%;
+background-color: #fff;
+direction: ltr;
+height: 100%;
+}
+
+p 
+{
+	font-size: 13px;
+	line-height: 23px;
+}
+
+/*========================= HEADER ========================================================================================================================= */
+#header 
+{
+	display:block;
+	width: 100%;
+	min-width: 900px;
+	height: 43px;
+	background: #191919;
+	text-align:left;
+	padding-top:0px;
+	position:fixed;
+	color:#dedede;
+}
+
+#cont_head 
+{
+	display:block;
+	width: 100%;
+	min-width: 900px;
+}
+
+#tool-menu
+{
+	float:left;
+	font-size: 18px;
+	border-right: 1px solid #DDD;
+	width: 40px;
+	height: 43px;
+	padding: 12px 10px 10px 10px;
+}
+
+#logo 
+{
+	float:left;
+	margin-left: 18px;
+	margin-top: 3px;
+	font-family: "impact", sans-serif,Verdana,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 30px;
+	color: #FFF;
+	font-weight: large;
+}
+
+#date 
+{
+	display:inline-block;
+	float:right;
+	width: 350px;
+	text-align:right;
+	padding-top:12px;
+	color:#FFF;
+	margin-right: 10px;
+}
+
+
+/* ==================================== CUERPO ============================================================================================================= */
+#wrapper 
+{
+	position: fixed;
+	width: 100%;
+	min-width: 850px;
+	height: 100%;
+	overflow:hidden;
+	top:43px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	 -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+} 
+
+#wrapper.toggled {
+    padding-left: 210px;
+}
+			
+#wrapper.toggled #sidebar-wrapper {
+    width: 210px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}		
+
+#sidebar-wrapper 
+{ 
+	position:relative;
+    width: 185px; 
+	height:100%;
+    float:left;
+	background-color: rgba(47, 64, 80, 0.95);;
+	margin-right: 0px;
+	padding: 0px;
+	border-right: 1px solid #DDD;
+	overflow-y:auto;
+	z-index: 1000;
+	overflow: hidden;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+} 
+
+#page-content-wrapper
+{ 
+	position:relative;
+ 	overflow-y: hidden;
+	overflow-x: hidden;
+	height: 100%;
+	min-height: 400px;
+	min-width: 200px;
+	padding: 0px;
+}
+
+#task-page-content-wrapper
+{ 	
+	background-color: #f5f5f5;
+	min-height: 200px;
+	position: absolute;
+	left: 0px;
+	right: 0px;	
+	padding: 0px;
+	margin: 0px;
+	overflow:auto;
+	bottom: 40px;
+	top: 0px;
+}
+
+#titulo-task-page-content-wrapper
+{
+	width: 100%;
+	min-width: 210px;
+	padding: 10px 15px;
+	border-bottom: 1px solid #DDD;
+	height: 45px;
+	text-align: left;
+	font-size: 18px;
+	color: #2f4356;
+	background-color: #f5f5f5;
+}
+
+#fondo 
+{
+	height: 35px;
+	background-color: #f5f5f5;
+}
+
+@media(min-width:168px) {
+    
+    #wrapper {
+        padding-left: 0px;
+    }
+
+    #wrapper.toggled 
+    {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper 
+    {
+        width: 160px;
+        background-color: #f5f5f5;
+       /* box-shadow: 0 0 4px rgba(0,0,0,.14),2px 4px 8px rgba(0,0,0,.28);*/
+    }
+
+    #wrapper.toggled #sidebar-wrapper 
+    {
+        width: 0px;
+        color: #fff;
+    }
+
+    #page-content-wrapper 
+    {
+        padding: 20px;
+    }
+
+    #wrapper.toggled #page-content-wrapper 
+    {
+        position: relative;
+        margin-right: 0;
+    }
+
+/* ============================================= MENU LIST EXPANDIDO ============================================ */
+
+	
+    #menu_home
+	{
+		display:block;
+		font-weight:lighter;
+		padding-top: 0px;
+		min-width: 165px;
+	}
+
+	#menu_home a 
+	{
+		display:block;
+		text-decoration:none;
+		padding: 12px;
+		height: 45px;
+		color:#585858;
+		border-bottom:1px solid #dfdfdf;
+		font-size: 14px;
+	}
+
+	#menu_home a:hover 
+	{
+		background-color:#1ab394;
+		color:#ffffff;
+	}
+
+	#menu_home i
+	{
+		padding-right: 6px;
+	}
+
+#menu_list
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#menu_list ul 
+{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ #menu_list li a 
+	{
+		display:block;
+		text-decoration:none;
+		font-weight:lighter;
+		height: 45px;
+		min-width: 155px;
+		color:#585858;
+		padding: 15px 0px 15px 11px;
+		border-bottom:1px solid #dfdfdf;
+		font-size: 14px;
+	}
+
+#menu_list li a:hover 
+	{
+		background-color:#1ab394;
+		color: #ffffff;
+	}
+
+#menu_list li i
+	{
+		padding-right: 6px;
+	}
+}
+
+/*===================================== MENU CONTRAIDO================================================================================================================*/
+
+    #wrapper.toggled #menu_home a 
+	{
+		display:block;
+		text-decoration:none;
+		padding: 12px;
+		height: 45px;
+		color:#585858;
+		border-bottom:1px solid #dfdfdf;
+		font-size: 14px;
+	}
+
+	#wrapper.toggled #menu_home a:hover 
+	{
+		background-color:#1ab394;
+		color:#ffffff;
+	}
+
+	#wrapper.toggled #menu_home i
+	{
+		padding-right: 6px;
+	}
+
+    #wrapper.toggled #menu_home
+	{
+		display:block;
+		font-weight:lighter;
+		padding-top: 0px;
+		min-width: 165px;
+	}
+
+
+
+
+/* ========================================= FrontEnd =================================================== */
+
+#contenedor-default
+{
+	background-color: #f5f5f5;
+	margin: 0px;
+	width: 100%;
+	padding: 20px 15px;
+	text-align: left;
+	font-size: 13px;
+	color: #2f4356;
+}
+
+#contenedor-blanco
+{
+	background-color: #ffffff;
+	margin: 0px;
+	width: 100%;
+	padding: 20px 15px;
+	text-align: left;
+	font-size: 13px;
+	color: #2f4356;
+}
+
+#contenedor-celestino
+{
+	background-color: #f3f6fb;
+	margin: 0px;
+	width: 100%;
+	padding: 20px 15px;
+	text-align: left;
+	font-size: 13px;
+	color: #2f4356;
+}
+
+#contenedor-verde
+{
+	background-color: rgba(24, 166, 37, 0.11);
+	margin: 0px;
+	width: 100%;
+	padding: 20px 15px;
+	text-align: left;
+	font-size: 13px;
+	color: #2f4356;
+}
+
+#contenedor-titulo
+{
+	text-align: left;
+	color: #676a6c;
+	font-size: 18px;
+	font-weight: lighter;
+	margin-bottom: 15px;
+}
+
+.border-b
+{
+	border-bottom: 1px solid #e7eaec;
+}
+
+.border-t
+{
+	border-top: 1px solid #e7eaec;
+}
+
+#box_sw
+{
+	background-color: #fff;
+	border-top: 4px solid #e7eaec;
+	width: 100%; 
+}
+
+#box_sw_title
+{
+	text-align: left;
+	padding: 12px 15px;
+	border-bottom: 1px solid #e7eaec;
+	font-size: 15px;
+	font-weight: bold;
+	color: #4F4F4F;
+}
+
+#box_derecha
+{
+	float: right;
+	width: 200px;
+	text-align: right;
+}
+
+#mini_box_derecha
+{
+	float: right;
+	text-align: right;
+}
+
+
+#box_sw_content
+{
+	text-align: left;
+	padding: 10px 15px;
+	font-size: 12px;
+	/*color: #676a6c;*/
+	color: #000;
+}
+
+#box
+{
+	width: 100%;
+	text-align: left;
+	font-size: 13px;
+}
+
+#titulo-task-derecha
+{
+	float: right;
+	text-align: right;
+	width: 300px;
+	font-size: 14px;
+	margin-top: 3px;
+}
+
+.text_bajada
+{
+	color: #1ab394;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	line-height: 20px;
+	width: 100%;
+}
+
+/* ====== LINEAS DE SEPARACION ======== */
+
+.hr-line-dashed {
+border-top: 1px dashed #e7eaec;
+color: #ffffff;
+background-color: #ffffff;
+height: 1px;
+margin: 20px 0;
+}
+
+.hr-line-solid {
+border-top: 1px solid #e7eaec;
+color: #ffffff;
+background-color: #ffffff;
+height: 1px;
+margin: 20px 0;
+}
+
+/* ====== FIN LINEAS DE SEPARACION ======== */
+
+
+/* Maps */
+#map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+
+
+.dia_gantt
+{
+	text-align:center; font-size: 11px; font-weight: lighter;
+}
+
+#calendar {
+		/*max-width: 900px;*/
+		margin: 0 auto;
+	}
