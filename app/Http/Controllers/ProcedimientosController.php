@@ -33,7 +33,7 @@ class ProcedimientosController extends Controller {
       $join= \DB::table('proced_base')
             ->join('plan_mtto', 'proced_base.id_plan_mtto', '=', 'plan_mtto.id_plan_mtto')
             ->join('activos', 'plan_mtto.id_activo', '=', 'activos.id_activo')
-            ->select('id_procedimiento','n_equipo', 'descripcion_s', 'cod_procedimiento')
+            ->select('id_procedimiento','n_equipo', 'descripcion_s', 'cod_procedimiento','procedimiento')
             ->get();
 
           
@@ -94,7 +94,7 @@ class ProcedimientosController extends Controller {
             ->join('plan_mtto', 'proced_base.id_plan_mtto', '=', 'plan_mtto.id_plan_mtto')
             ->join('activos', 'plan_mtto.id_activo', '=', 'activos.id_activo')
              ->join('proced_estados', 'proced_estados.id_estado', '=', 'proced_base.id_estado')
-            ->select('id_procedimiento','n_equipo', 'descripcion_s', 'cod_procedimiento','nombre')
+            ->select('id_procedimiento','n_equipo', 'descripcion_s', 'cod_procedimiento','nombre','procedimiento')
             ->get();
 
 
@@ -335,13 +335,7 @@ $datos['id']=$ultimo->id_actividad;
           'id_procedimiento' => $id_proc,
           'acti' => $actividades
         ));
-
-
-                       
-
-
-
-
+                      
  }
 
 
@@ -373,6 +367,34 @@ $datos['id']=$ultimo->id_actividad;
    } 
     
  }
+
+
+
+ public function postEditarDetalle()
+ {
+      if(Request::ajax())
+     {  
+
+         $id= Request::input('invisible');
+         $detalle =  Request::input('actividadss');
+
+
+ 
+   \DB::table('proced_actividad')
+            ->where('id_actividad',$id)
+            ->update(['detalle' =>  $detalle]);
+
+
+                
+          return response()->json(array(
+              'resultado' => $id
+               ));
+   }  
+
+
+ }
+
+
 
  public function postVerEditarActividads()
  {

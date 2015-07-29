@@ -45,6 +45,7 @@
                   <th style="text-align:center;" width="12%">N° Activo</th>
                   <th style="text-align:center;">Descripción de Activo</th>
                     <th style="text-align:center;" width="12%">Cod. Proced.</th>
+                     <th style="text-align:center;" width="12%">Descripción Proced.</th>
                   <th width="8%" style="text-align:center;">Ver - Editar</th>
                   <th width="8%" style="text-align:center;">Control Cambios</th>
                   <th width="8%" style="text-align:center;">PDF</th>
@@ -59,6 +60,7 @@
                  <td>{{$dato->n_equipo}}</td>
                 <td>{{$dato->descripcion_s}}</td>
                 <td>{{$dato->cod_procedimiento}}</td>
+                  <td>{{$dato->procedimiento}}</td>
                 <td  width="8%" style="text-align:center; font-size: 14px;"><a href="{{ route('procedimientos.vereditar',$dato->id_procedimiento) }}"><i class="fa fa-eye"></i></a></td>
                 <td  width="8%" style="text-align:center; font-size: 14px;"><a href="{{ route('procedimientos.control_cambios',$dato->id_procedimiento) }}"><i class="fa fa-folder-open-o"></i></a></td>
                 <td  width="8%" style="text-align:center; font-size: 14px;"><a href="#"><i class="fa fa-file-pdf-o"></i></a></td>

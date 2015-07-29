@@ -44,7 +44,7 @@
                 <input class="form-control" id="exampleInputEmail1" name="name_proced" style="width: 50%;" maxlength="40" value="{{$proced_base }}" disabled>
                 
 
-        </div>
+       </div>
 
             <div class="form-group ">
               {!! Form::select('id_grupo', $grupo_trabajo , $seleccionado, ['class' => 'form-control' , "style" => "width:50%;" ,  'disabled' => 'disabled']) !!}
@@ -70,7 +70,7 @@
   
   {!! Form::open(['route' => 'procedimientos.vereditarajax','method' => 'POST','id'=>'formularioeditar']) !!}
 
-        {!! Form::hidden('id_actividad', 'secret', array('id' => 'id_actividad')) !!}
+          {!! Form::hidden('id_actividad', 'secret', array('id' => 'id_actividad')) !!}
 
           {!! Form::hidden('id_procedimiento', $id_procedimiento) !!}
 
@@ -96,7 +96,7 @@
         
        <div class="modal-footer">
                      <button id="guardarcambios" type="submit" class="btn btn-success  btn-sm" ><i class="fa fa-floppy-o"></i> Guardar Cambios</button>
-                        {!! Form::close() !!}
+    {!! Form::close() !!}
                     <button type="button" class="btn btn-danger  btn-sm" data-dismiss="modal"> <i class="fa fa-times"></i> Cerrar</button>
           
       </div>
@@ -191,8 +191,7 @@
   $(document).ready(function(e) {                                        
         $('button[rel="abrir"]').click(function(e) {
                             e.preventDefault();
-                            alert("hola");
-                 
+                          
 
                 var id = $(this).attr('id');
               

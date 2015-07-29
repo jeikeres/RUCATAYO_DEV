@@ -45,6 +45,7 @@
                   <th style="text-align:center;" width="12%">N° Activo</th>
                   <th style="text-align:center;">Descripción de Activo</th>
                     <th style="text-align:center;" width="12%">Cod. Proced.</th>
+                     <th style="text-align:center;" width="12%">Descripción Proced.</th>
                          <th style="text-align:center;" width="12%">Estado</th>
              
                 </tr>
@@ -58,6 +59,7 @@
                  <td>{{$dato->n_equipo}}</td>
                 <td>{{$dato->descripcion_s}}</td>
                 <td>{{$dato->cod_procedimiento}}</td>
+                   <td>{{$dato->procedimiento}}</td>
                        <td>{{$dato->nombre}}</td>
 
             </tr>

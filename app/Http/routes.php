@@ -58,6 +58,7 @@ Route::controller('procedimientos', 'ProcedimientosController', [
          'getVerEditarActividad' => 'procedimientos.vereditar',
          'postVerEditarActividad' => 'procedimientos.vereditarajax',
          'postVerEditarActividads' => 'procedimientos.vereditarajax2',
+         'postEditarDetalle' => 'procedimientos.vereditarajaxdetalle',
 
 ]);
 //    {!! Form::open(['route' => 'procedimientos.actividad','method' => 'POST']) !!}

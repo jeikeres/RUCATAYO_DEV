@@ -131,6 +131,12 @@ class PlanificacionController extends Controller {
                 ->where('id_activo', '=',$mtto)
                 ->pluck('n_equipo');
 
+  $procedimiento= \DB::table('PROCED_BASE')
+                ->where('id_procedimiento', '=',$id)
+                ->first();
+                
+
+
 
 
     return view('planificacion', array(
@@ -143,6 +149,11 @@ class PlanificacionController extends Controller {
              'descripcion_mtto' => $mtto2,
              'frecuencia' => $mtto3,
              'ultimo' => $mtto4->format('Y-m-d'),
+               'seleccionado_tipomtto' => $procedimiento->id_plan_mtto,
+                'seleccionado_grupo_trabajo' => $procedimiento->id_grupo_trabajo,
+                  'seleccionado_condicion' => $procedimiento->id_estado_proced,
+              
+
         ));
 
 

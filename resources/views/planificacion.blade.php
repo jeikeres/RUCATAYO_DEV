@@ -37,19 +37,19 @@
 
 							<div class="form-group">
 						    <label for="exampleInputEmail1">Codigo de Activo ( Equipo o Componente )</label>
-						    <input class="form-control" id="exampleInputEmail1" value="{{$plan}}" name="cod_equipo" placeholder="Ej: ABCD0001" style="width: 50%;" maxlength="15" required>
+						    <input class="form-control" id="exampleInputEmail1" value="{{$plan}}" name="cod_equipo" placeholder="Ej: ABCD0001" style="width: 50%;" maxlength="15" disabled>
 						</div>
 
 						<div class="form-group">
 						    <label for="exampleInputPassword1">Descripción de Mantenimiento</label>
-						    <input class="form-control" name="desc_mantt" value="{{$descripcion_mtto}}" placeholder="Ej: Cambio de Carcaza" maxlength="50" required>
+						    <input class="form-control" name="desc_mantt" value="{{$descripcion_mtto}}" placeholder="Ej: Cambio de Carcaza" maxlength="50" disabled>
 						</div>
 
 
 			  	 		<div class="form-group">
 						<label for="exampleInputEmail1">Tipo de Mantenimiento</label>
 
-		           {!! Form::select('tipomantt', $tipo_mtto , null , ['class' => 'form-control' , "style" => "width:50%;" ]) !!}
+		           {!! Form::select('tipomantt', $tipo_mtto , $seleccionado_tipomtto, ['class' => 'form-control' , "style" => "width:50%;", 'disabled' => 'disabled' ]) !!}
 
 						</div>
 
@@ -58,21 +58,21 @@
 						<div class="form-group">
 						<label for="exampleInputEmail1">Grupo de Trabajo</label>
 
-					      {!! Form::select('id_grupo', $grupo_trabajo , null , ['class' => 'form-control' , "style" => "width:50%;" ]) !!}
+					      {!! Form::select('id_grupo', $grupo_trabajo , $seleccionado_grupo_trabajo, ['class' => 'form-control' , "style" => "width:50%;", 'disabled' => 'disabled' ]) !!}
 
 					</div>
 
 
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Frecuencia ( Dias )</label>
-						    <input class="form-control" id="exampleInputEmail1" value="{{$frecuencia}}" name="frecuencia" placeholder="Ej: 30" style="width: 50%;" maxlength="5" required>
+						    <input class="form-control" id="exampleInputEmail1" value="{{$frecuencia}}" name="frecuencia" placeholder="Ej: 30" style="width: 50%;" maxlength="5" disabled>
 
 						</div>
 
 
 								<div class="form-group">
 						<label for="exampleInputEmail1">Condicion de Equipo</label>
-			  	 	    {!! Form::select('id_mtto', $operacion_mtto , null , ['class' => 'form-control' , "style" => "width:50%;" ]) !!}
+			  	 	    {!! Form::select('id_mtto', $operacion_mtto , $seleccionado_condicion , ['class' => 'form-control' , "style" => "width:50%;" ,'disabled' => 'disabled' ]) !!}
 						</div>
 
 
@@ -83,7 +83,7 @@
 						   <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
 
 
-              <input  style="width: 50%;" type="date" value="{{$ultimo}}" class="form-control" name="mantt_ejec" required>
+              <input  style="width: 50%;" type="date" value="{{$ultimo}}" class="form-control" name="mantt_ejec" disabled>
 
 						</div></div>
 
@@ -92,16 +92,11 @@
 		
 
 
-         
-
-
-
-
              <input type="hidden" name="id_procedimiento" value="{{$id_procedimiento}}">
 
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-             <button type="submit" style="text-decoration:inherit;color:antiquewhite;" class="btn btn-success btn-ms"> guardar</button>
+             <button type="submit" style="text-decoration:inherit;color:antiquewhite;" class="btn btn-success btn-ms"> Confirmar</button>
 
                <a  class="btn btn-danger"  id="cancelar" style="text-decoration: inherit;
              color: antiquewhite;" href="#">Cancelar</a>
@@ -228,7 +223,7 @@ $(document).ready(function() {
   
         
 
-       if (confirm("¿ ESTÁ SEGURO QUE DESEA LOS DATOS INGRESADO   ?")) 
+       if (confirm("¿ ESTÁ SEGURO QUE DESEA BORRAR LOS DATOS INGRESADOS ?")) 
       {  
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
