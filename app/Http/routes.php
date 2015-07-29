@@ -57,6 +57,7 @@ Route::controller('procedimientos', 'ProcedimientosController', [
          'deleteEliminar' => 'procedimientos.destroy',
          'getVerEditarActividad' => 'procedimientos.vereditar',
          'postVerEditarActividad' => 'procedimientos.vereditarajax',
+         'postVerEditarActividads' => 'procedimientos.vereditarajax2',
 
 ]);
 //    {!! Form::open(['route' => 'procedimientos.actividad','method' => 'POST']) !!}
@@ -65,7 +66,8 @@ Route::controller('procedimientos', 'ProcedimientosController', [
 Route::controller('planificacion', 'PlanificacionController', [
          'postPlanificacion' => 'planificacion.actividad',
          'getPruebas' =>'planificacion.pruebas',
-                 'postSave' =>'planificacion.save',
+         'postSave' =>'planificacion.save',
+         'deleteEliminar' => 'planificacion.destroy',
 
 ]);
 

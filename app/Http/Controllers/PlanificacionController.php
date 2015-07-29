@@ -102,12 +102,11 @@ class PlanificacionController extends Controller {
     }
 
     
-     public function getPruebas($id=null)
-    {
-
+  public function getPruebas($id=null)
+  {
 
   if(isset($id))
- {
+  {
 
    $p = Proced_Base::find($id);
 
@@ -318,7 +317,41 @@ return redirect()->route('procedimientos.prueba', [$ultimo->id_procedimiento]);
                 dd($resultado2);
 
 }
+   
+  public function deleteEliminar()
+  {
        
+    if(Request::ajax())
+    {
+          
+        $ids = Request::input('ids');
+
+
+
+    \DB::table('PROCED_ACTIVIDAD')
+              ->where('id_procedimiento', '=',$ids)
+              ->delete();
+
+ $id_planificacion= \DB::table('PROCED_BASE')
+                ->where('id_procedimiento', '=',$ids)
+                ->pluck('id_plan_mtto');
+
+        \DB::table('PROCED_BASE')
+              ->where('id_procedimiento', '=',$ids)
+              ->delete();   
+    
+       \DB::table('PLAN_MTTO')
+              ->where('id_plan_mtto', '=',$id_planificacion)
+              ->delete();
+
+            $message="ELIMINADO CORRECTAMENTE";
+            return $message;  
+      
+    }
+
+
+}
+    
 
 
 

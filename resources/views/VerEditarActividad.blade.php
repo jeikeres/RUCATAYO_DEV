@@ -75,11 +75,7 @@
           {!! Form::hidden('id_procedimiento', $id_procedimiento) !!}
 
 
-        <div class="form-group">
-        <!--label id=nombre el primero-->
-        {!! Form::label('orden', 'Orden') !!}
-        {!! Form::text('orden',null,['class' =>'form-control', 'required' => 'required']) !!}
-        </div>
+  
 
                 <div class="form-group">
         <!--label id=nombre el primero-->
@@ -113,7 +109,7 @@
 </div>
 <!-- FIN DE Modal -->
 
- </div>
+
 
 
 
@@ -125,7 +121,9 @@
           <th style="text-align:center;" width="12%">Orden</th>
           <th>Actividad</th>
             <th>Detalle</th>
-          <th style="text-align:center;" width="12%"></th>
+               <th style="text-align: center; width: 8%;">Editar</th>
+          <th style="text-align: center; width: 8%;">Eliminar</th>
+
        
         
         </tr>
@@ -133,18 +131,24 @@
       <tbody>     
            @foreach($acti as $a)
             <tr>
-              <td>{{$a->item}}</td>
+             <td><input class="form-control gener" id="genera"  value="{{$a->item}}"></td>
               <td>{{$a->name_actividad}}</td>
               <td>{{$a->detalle }}</td>
+        
 
 
 
 
-<td>  <button class="btn btn-sm btn-success" id="{{$a->id_actividad}}"  name="{{$a->name_actividad}}" detalle="{{ $a->detalle }}" orden="{{ $a->item }}" rel="abrir" data-toggle="modal" data-target="#Edit"
->Editar</a></button>
 
-<button class="btn btn-sm btn-danger" onclick="deleteUser({{$a->id_actividad}},this)" type="button" class="btn btn-link"
->Eliminar</a></button>
+
+<td  style="text-align: center;">  <button  class="btn btn-link" id="{{$a->id_actividad}}"  name="{{$a->name_actividad}}" detalle="{{ $a->detalle }}" orden="{{ $a->item }}" rel="abrir" data-toggle="modal" data-target="#Edit"
+><i class="fa fa-plus"></i></button></td>
+
+
+
+
+<td   style="text-align: center;"><button  onclick="deleteUser({{$a->id_actividad}},this)" type="button" class="btn btn-link"
+><i class="fa fa-times"></i></button>
 </td>
 
 
@@ -155,6 +159,12 @@
 
       </tbody>
     </table>
+  
+ <td>  <button class="btn btn-sm btn-success" id="generar" >Generar Orden</a></button>   
+
+
+
+     </div>
 
 
 
@@ -185,14 +195,14 @@
                  
 
                 var id = $(this).attr('id');
-                var orden = $(this).attr('orden');//aca lo captura
+              
                 var actividad = $(this).attr('name');
                 var detalle = $(this).attr('detalle');
      
  
                 //y si queres podes enviarla de vuelta a la pagina, hacia la ventana modal:
                 document.getElementById("id_actividad").value = id;
-                document.getElementById("orden").value = orden;//y aqui lo envias a la ventana modal con el id "per"
+               
                 document.getElementById("actividad").value = actividad;
                 document.getElementById("detalle").value = detalle;
                 
@@ -256,11 +266,57 @@
 
       
         $('#Edit').modal('hide');
-    });
+    }); 
 
 
 
-});
+
+
+
+    $("#generar").on('click', function() {
+
+       var ids = [];
+       
+      $(".gener").each(function() {
+               ids.push($(this).val());
+        });
+
+        console.log(ids);
+    
+
+              var CSRF_TOKENS = $('meta[name="csrf-token"]').attr('content');
+           
+              $.ajax({
+                  type: 'POST',
+                  url: '{{ route('procedimientos.vereditarajax2') }}',
+                  data :{_token: CSRF_TOKENS, id_procedimiento:{{$id_procedimiento}}, id:ids},
+                  dataType: "json",
+                  beforeSend: function(){
+                    
+                  },
+                  complete: function(data){
+                    
+                  },
+                  success: function (data) 
+                  {
+                  
+                   // console.log(data);
+                    location.reload();
+                 
+                
+                  },
+                  error: function(errors){
+                    console.log(errors);
+                  
+                  }
+              });
+    
+   
+     });
+
+
+
+    }); 
 
 
 

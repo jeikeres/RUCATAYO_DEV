@@ -90,7 +90,7 @@ return [
     'port' => '1521',
     'database' => 'XE',
     'username' => 'RUCATAYO_LOC',
-    'password' => 'RUCALOC',
+    'password' => '1234',
     'charset' => 'AL32UTF8',
     'prefix' => '',
 )

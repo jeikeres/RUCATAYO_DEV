@@ -323,6 +323,7 @@ $datos['id']=$ultimo->id_actividad;
                       ->join('proced_actividad', 'proced_base.id_procedimiento', '=', 'proced_actividad.id_procedimiento') 
                       ->where('proced_actividad.id_procedimiento',$id)
                       ->select('id_actividad','name_actividad', 'detalle', 'item')
+                       ->orderBy('item', 'asc')
                       ->get();
                    
 
@@ -354,7 +355,7 @@ $datos['id']=$ultimo->id_actividad;
 
      'name_actividad' => Request::input('actividad'),
      'detalle' => Request::input('detalle'),
-     'item' => Request::input('orden'),
+
   
     );
 
@@ -371,6 +372,127 @@ $datos['id']=$ultimo->id_actividad;
                ));
    } 
     
+ }
+
+ public function postVerEditarActividads()
+ {
+    if(Request::ajax())
+     {  
+
+      
+     $variable= Request::input('id');
+     $id_procedimiento=Request::input('id_procedimiento');
+
+
+     
+
+     //       $msg = null;
+     //   $people=array();
+
+    //    $roles = Sala::find(Request::input('salas'))->periodos;
+      //  $ids=Request::input("periodo");
+
+
+         $actividades= \DB::table('PROCED_ACTIVIDAD')
+                ->where('id_procedimiento',$id_procedimiento)
+                ->orderBy('item', 'asc')
+                ->get();
+      
+     $i=0;    
+     foreach($variable as $val) 
+     {
+     
+         $id = $val; // ordenes
+
+ 
+              $idactiv=$actividades[$i]->id_actividad; //id actividad 
+             $item_Activ_post=$id; //orden 
+
+        
+             \DB::table('proced_actividad')
+                   ->where('id_actividad',$idactiv)
+                    ->update(['item' => $item_Activ_post]);
+
+        $i++;
+    }
+
+    
+         $actividades2= \DB::table('PROCED_ACTIVIDAD')
+                ->where('id_procedimiento',$id_procedimiento)
+                ->orderBy('item', 'asc')
+                ->get();
+
+       
+         $item_new = 1;
+          $is=0;
+        foreach($variable as $vale) 
+           {
+                  
+                
+              $idactiv2=$actividades2[$is]->id_actividad; //id actividad 
+          
+                \DB::table('proced_actividad')
+                   ->where('id_actividad',$idactiv2)
+                    ->update(['item' => $item_new]);
+
+
+                $item_new++;
+                $is++;
+          }
+
+
+
+/*
+         $is=0;
+
+   $item_new = 1;
+     foreach($variable as $vals) 
+     {
+     
+         $id2 = $vals; // ordenes
+
+      $actividades2= \DB::table('PROCED_ACTIVIDAD')
+                ->where('id_procedimiento', '=',$id_procedimiento)
+                ->orderBy('item', 'asc')
+                ->get();
+
+
+
+
+              $idactivs=$actividades2->id_actividad; //orden 
+            //  $item_Activ_posts2=$id2; //id actividad
+
+             
+          //   $query_update_first = "UPDATE PROCED_ACTIVIDAD SET ITEM = $item_Activ_post WHERE ID_ACTIVIDAD = $idactiv";
+        
+     \DB::table('proced_actividad')
+            ->where('id_actividad',$idactivs)
+            ->update(['item' => $item_new]);
+
+
+//$query_update_first = "UPDATE PROCED_ACTIVIDAD SET ITEM = $item_new WHERE ID_ACTIVIDAD = $idactiv";
+//$query_exe_update = oci_parse($conexion, $query_update_first);
+//oci_execute($query_exe_update);
+
+$item_new++; // incremnenta desde el primer item de uno en uno
+
+
+
+        $is++;
+    }
+*/
+ 
+
+          return response()->json(array(
+              'resultado' => $actividades
+               ));
+
+   
+   } 
+
+
+
+
  }
 
 

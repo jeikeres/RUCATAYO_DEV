@@ -116,7 +116,6 @@
  
                   
 
-</div>
 
 
         {!! Form::hidden('id_procedimiento', $id_procedimiento) !!}
@@ -125,7 +124,7 @@
   {!! Form::close() !!}
 
 
-	  	 	<table id="tableId" class="table table-bordered">
+	  	 	<table id="tableId" class="table table-bordered" style="margin-top:15px;">
       <thead>
         <tr>
          
@@ -147,19 +146,43 @@
 
 
 
-	<div id="box" style="border: 1px solid #dddddd; padding: 10px; margin-bottom: 10px;">
-	  	 		<button class="btn btn-info btn-ms" type="submit">H.H.</button>
-	  	 		<button class="btn btn-info btn-ms" type="submit">Materiales</button>
-	  	 		<button class="btn btn-info btn-ms" type="submit">Insumos</button>
-	  	 		<button class="btn btn-info btn-ms" type="submit">Herramientas</button>
-	  	 		<button class="btn btn-info btn-ms" type="submit">Repuestos</button>
+  <div id="box" style="border: 1px solid #dddddd; padding: 10px; margin-bottom: 10px;">
 
-	
+<!-- Tabs Recursos -->
+    <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+      <!--Lista de Pestañas -->
+    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#hh" id="hh-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false"><i class="fa fa-clock-o"></i> Horas Personas</a></li>
+    <li role="presentation" class=""><a href="#materiales" role="tab" id="materiales-tab" data-toggle="tab" aria-controls="materiales" aria-expanded="true"><i class="fa fa-briefcase"></i> Materiales</a></li>
+    <li role="presentation" class=""><a href="#insumos" id="insumos-tab" role="tab" data-toggle="tab" aria-controls="insumos" aria-expanded="false"><i class="fa fa-list-ol"></i> Insumos</a></li>
+    <li role="presentation" class=""><a href="#herramientas" role="tab" id="herramientas-tab" data-toggle="tab" aria-controls="herramientas" aria-expanded="true"><i class="fa fa-wrench"></i> Herramientas</a></li>
+    <li role="presentation" class=""><a href="#repuestos" id="repuestos-tab" role="tab" data-toggle="tab" aria-controls="repuestos" aria-expanded="false"><i class="fa fa-cog"></i> Repuestos</a></li>
+    </ul>
+    <!-- Fin Pestañas -->
 
+    <!-- Contenido Tabs Pestañas -->
+    <div id="myTabContent" class="tab-content">
+    <div role="tabpanel" class="tab-pane fade active in" id="hh" aria-labelledby="hh-tab">
+      <br><br><br>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="materiales" aria-labelledby="materiales-tab">
+        <br><br><br>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="insumos" aria-labelledby="insumos-tab">
+        <br><br><br>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="herramientas" aria-labelledby="herramientas-tab">
+        <br><br><br>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="repuestos" aria-labelledby="repuestos-tab">
+        <br><br><br>
+    </div>
+    </div>
+    </div>
+<!-- Fin Tabs Recursos -->
 
-
-	</div>
-
+  </div>
+</div>
 
 	</div>
 	</div>

@@ -223,13 +223,37 @@ $(document).ready(function() {
 
   $('#cancelar').on('click', function(e) 
   {
+
+    var id= '{{$id_procedimiento}}';
   
-    alert("estas seguro");
-    
+        
 
+       if (confirm("¿ ESTÁ SEGURO QUE DESEA LOS DATOS INGRESADO   ?")) 
+      {  
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
+               $.ajax({
+                type: "DELETE",
+                url: '{{ route('planificacion.destroy') }}', 
+                data: {_token: CSRF_TOKEN, ids:id },
+           
+                success: function(affectedRows) {
+                   console.log(affectedRows);
+
+                  
+                  window.location.href = "{{route('planificacion.pruebas')}}";
+                 
+                                 
+                }
+            });
+
+     }
 
   });
+
+
+
+
 
 
 
